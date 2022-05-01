@@ -64,9 +64,9 @@
 				C69BF443281B44F200191E66 /* ItemView.swift */,
 				C6AA9DF72819F1FB00AEDDF6 /* DetailView.swift */,
 				C69BF445281B48F600191E66 /* Book.swift */,
+				C69BF447281B49BB00191E66 /* BooksDataSample.swift */,
 				C6AA9DF92819F20200AEDDF6 /* Assets.xcassets */,
 				C6AA9DFB2819F20200AEDDF6 /* Preview Content */,
-				C69BF447281B49BB00191E66 /* BooksDataSample.swift */,
 			);
 			path = SampleBookstore;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SampleBoolstore/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SampleBookstore/Preview Content\"";
 				DEVELOPMENT_TEAM = T2Q4YR3P44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -311,7 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SampleBoolstore/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SampleBookstore/Preview Content\"";
 				DEVELOPMENT_TEAM = T2Q4YR3P44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

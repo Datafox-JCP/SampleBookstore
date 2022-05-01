@@ -11,7 +11,7 @@ struct MainView: View {
     
     let books = [
     Book(title: "El pequeño libro de la astucia", author: "Lucas Bracco", price: "$180.00", image: "astucia"),
-    Book(title: "Caleidoscopio Existencia", author: "Lucas Bracco", price: "$180.00", image: "existencial"),
+    Book(title: "Caleidoscopio Existencial", author: "Lucas Bracco", price: "$180.00", image: "existencial"),
     Book(title: "El pequeño libro de la astucia", author: "Lucas Bracco", price: "$180.00", image: "peligro"),
     Book(title: "Roma soy yo", author: "Lucas Bracco", price: "$180.00", image: "roma")
     ]

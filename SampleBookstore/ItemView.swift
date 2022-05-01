@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ItemView: View {
+    
     let book: Book
     
     var body: some View {
@@ -16,8 +17,8 @@ struct ItemView: View {
                 Image(book.image)
                     .resizable()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: .gray, radius: 10, x: 1, y: 1)
-                    .frame(width: 60, height: 90)
+                    .shadow(color: .gray, radius: 20, x: 1, y: 1)
+                    .frame(width: 70, height: 120)
                 
                 VStack(alignment: .leading) {
                     Text(book.title)
@@ -30,20 +31,21 @@ struct ItemView: View {
                         .foregroundColor(.gray)
                     
                     Text(book.price)
-                        .font(.title2)
+                        .font(.title3)
                         .fontWeight(.semibold)
-                        .padding(.top, 3)
+                        .padding(.top, 4)
                     
                 }
-                .padding(.leading, 2)
+                .padding(.leading, 10)
             }
-            Spacer()
         }
     }
 }
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(book: .init(title: "Sample", author: "Author", price: "$100.00", image: "existencial"))
-    }
+        ItemView(book: .init(title: "Caleidoscopio Existencial", author: "by: Juan Alamaza Pérez", price: "$190.00", image: "existencial"))
+            .padding()
+            .previewLayout(.fixed(width: 350.0, height: 150.0))
+        }
 }
