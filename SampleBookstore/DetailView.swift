@@ -9,26 +9,34 @@ import SwiftUI
 
 struct DetailView: View {
     
+    @State private var animate = false
+    
+    var randomMinRange = 5.0
+    var randomMaxRange = 8.0
+    
     var body: some View {
         VStack {
-            Image("astucia")
+            Image("perdon")
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(color: .black, radius: 10, x: 1, y: 1)
                 .frame(width: 200, height: 300)
+                .scaleEffect(animate ? 1 : 0.1)
+                .rotationEffect(.degrees(animate ? 0: 180))
+                .opacity(animate ? 1 : 0)
             
             VStack {
-                Text("Lucas Bracco")
+                Text("John Grisham")
                     .font(.headline)
                     .foregroundColor(.gray)
                     .padding(.top)
                 
-                Text("EL PEQUEÑO LIBRO DE LA ASTUCIA")
+                Text("Tiempo de perdón")
                     .font(.title3)
                     .fontWeight(.semibold)
                 
                 
-                Text("Es un griego el primero que le muestra a Occidente una valiosa lección sobre las ventajas del ingenio sobre la fuerza. Ulises —u Odiseo (Ὀδυσσεὺς) si atendemos a su nombre en griego— es uno de los personajes clave de la mitología griega y tan importante como Hércules o Aquiles. Sin embargo, a diferencia de estos últimos, Ulises no es ni el mejor guerrero, ni el más fuerte, ni el más valiente. Con Ulises estamos ante el triunfo de la astucia. Es el héroe pícaro, bribón y taimado que siempre encuentra alguna treta cuando algo va mal; que siempre concibe algún invento para darle vuelta a una situación difícil y así ganarle a los más fuertes. En él se encarna el célebre dicho «Más vale maña que fuerza», uno de los principios básicos de la astucia. Ahora bien, aquí no entenderemos la astucia como manipulación o maquiavelismo, sino como prudencia, inteligencia, sagacidad y discreción.")
+                Text("Clanton, Mississippi, 1990. Stuart Kofer, ayudante del sheriff, se considera intocable. Aunque, cuando bebe más de la cuenta, algo bastante habitual, vuelca sus ataques de ira en su novia, Josie, y los hijos adolescentes de esta, el código de silencio de la policía siempre le ha protegido")
                     .font(.callout)
                     .lineSpacing(4.0)
                     .foregroundColor(.gray)
@@ -36,7 +44,7 @@ struct DetailView: View {
                     .lineLimit(4)
                 
                 HStack {
-                    Text("Fantasy")
+                    Text("Drama")
                         .fontWeight(.semibold)
                         .foregroundColor(.black)
                         .padding(10)
@@ -44,6 +52,9 @@ struct DetailView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
+                        .rotationEffect(.degrees(animate ? 0 : 180))
+                        .opacity(animate ? 1: 0)
+                        .animation(.spring(response: 0.7, dampingFraction: 0.4, blendDuration: 100).delay(Double.random(in: randomMinRange..<randomMaxRange) * 0.1), value: animate)
                     
                     Text("Action")
                         .fontWeight(.semibold)
@@ -53,6 +64,9 @@ struct DetailView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
+                        .rotationEffect(.degrees(animate ? 0 : 180))
+                        .opacity(animate ? 1: 0)
+                        .animation(.spring(response: 0.7, dampingFraction: 0.4, blendDuration: 100).delay(Double.random(in: randomMinRange..<randomMaxRange) * 0.1), value: animate)
                     
                     Text("Novel")
                         .fontWeight(.semibold)
@@ -62,13 +76,16 @@ struct DetailView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
+                        .rotationEffect(.degrees(animate ? 0 : 180))
+                        .opacity(animate ? 1: 0)
+                        .animation(.spring(response: 0.7, dampingFraction: 0.4, blendDuration: 100).delay(Double.random(in: randomMinRange..<randomMaxRange) * 0.1), value: animate)
                 }
                 
                 Divider()
                     .padding(10)
                 
                 Button(action: {}) {
-                    Text("Comprar por $180.00")
+                    Text("Comprar por $159.00")
                         .fontWeight(.medium)
                         .foregroundColor(Color.white)
                         
@@ -78,6 +95,11 @@ struct DetailView: View {
                 .controlSize(.large)
                 .background(Color.black)
                 .cornerRadius(40)
+            }
+        }
+        .onAppear {
+            withAnimation {
+                animate.toggle()
             }
         }
     }

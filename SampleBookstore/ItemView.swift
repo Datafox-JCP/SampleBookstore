@@ -44,7 +44,7 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(book: .init(title: "Caleidoscopio Existencial", author: "by: Juan Alamaza Pérez", price: "$190.00", image: "existencial"))
+        ItemView(book: .init(title: "Tiempo de perdón", author: "by: John Grisham", summary: "Clanton, Mississippi, 1990. Stuart Kofer, ayudante del sheriff, se considera intocable. Aunque, cuando bebe más de la cuenta, algo bastante habitual, vuelca sus ataques de ira en su novia, Josie, y los hijos adolescentes de esta, el código de silencio de la policía siempre le ha protegido", price: "$189.00", image: "perdon"))
             .padding()
             .previewLayout(.fixed(width: 350.0, height: 150.0))
         }
