@@ -21,7 +21,7 @@ struct ItemView: View {
                     .frame(width: 70, height: 120)
                 
                 VStack(alignment: .leading) {
-                    Text(book.title)
+                    Text(book.bookName)
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(.top, 2)
@@ -29,8 +29,7 @@ struct ItemView: View {
                     Text(book.author)
                         .font(.footnote)
                         .foregroundColor(.gray)
-                    
-                    Text(book.price)
+                    Text("$\(book.priceToDouble())")
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.top, 4)
@@ -44,8 +43,8 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(book: .init(title: "Tiempo de perdón", author: "by: John Grisham", summary: "Clanton, Mississippi, 1990. Stuart Kofer, ayudante del sheriff, se considera intocable. Aunque, cuando bebe más de la cuenta, algo bastante habitual, vuelca sus ataques de ira en su novia, Josie, y los hijos adolescentes de esta, el código de silencio de la policía siempre le ha protegido", price: "$189.00", image: "perdon"))
-            .padding()
-            .previewLayout(.fixed(width: 350.0, height: 150.0))
+        let bookService: MockBookService = MockBookService()
+        let book = BookViewModel(mockBookService: bookService).mockBookService.books[0]
+        ItemView(book: book)
         }
 }

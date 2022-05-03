@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SampleBookstoreApp: App {
+    
+    let bookService: MockBookService = MockBookService()
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(service: bookService)
         }
     }
 }
