@@ -48,5 +48,6 @@ struct CartItemView_Previews: PreviewProvider {
         let book = BookViewModel(mockBookService: bookService).mockBookService.books[0]
         let item = CartItems(id: "1", item: book, unit: 2)
         CartItemView(item: item)
+            .previewLayout(.sizeThatFits)
     }
 }

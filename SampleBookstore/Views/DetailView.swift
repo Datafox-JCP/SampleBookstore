@@ -12,6 +12,9 @@ struct DetailView: View {
     @ObservedObject var bookViewModel: BookViewModel
     @State private var animate = false
     
+    @State private var showModal = false
+    @State private var showAlert = false
+    
     var bookId: Int
     var randomMinRange = 5.0
     var randomMaxRange = 8.0
@@ -78,28 +81,54 @@ struct DetailView: View {
                 Divider()
                     .padding(10)
                 
-                Button(action: {}) {
-                    Text("Comprar por $\(getBook().priceToDouble())")
-                        .fontWeight(.medium)
-                        .foregroundColor(Color.white)
-                        
+                HStack {
+                    
+                    if getBook().isAvailable {
+                        Button(action: {}) {
+                            Text("Comprar por $\(getBook().priceToDouble())")
+                                .fontWeight(.medium)
+                                .foregroundColor(Color.white)
+                                .background(.green)
+                        }
+                    } else {
+                        Button(action: { addToCart(); showAlert = true }) {
+                            Text("Comprar por $\(getBook().priceToDouble())")
+                                .fontWeight(.medium)
+                                .foregroundColor(Color.white)
+                            
+                        }
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.roundedRectangle(radius: 0))
+                        .controlSize(.large)
+                        .background(Color.black)
+                        .cornerRadius(40)
+                        .alert(isPresented: $showAlert, content: {
+                            Alert(title: Text("Producto añadido al carrito"), message: Text("Proceda al pago para completar su orden"), dismissButton: .default(Text("Ok")))
+                        })
+                        .scaleEffect(animate ? 1 : 0)
+                        .rotationEffect(.degrees(animate ? 0 : 180))
+                        .opacity(animate ? 1 : 0)
+                        .animation(.spring(response: 0.7, dampingFraction: 0.4, blendDuration: 1)
+                            .delay(Double.random(in: randomMinRange..<randomMaxRange) * 0.2), value: animate)
+                    }
                 }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.roundedRectangle(radius: 0))
-                .controlSize(.large)
-                .background(Color.black)
-                .cornerRadius(40)
-                .scaleEffect(animate ? 1 : 0)
-                .rotationEffect(.degrees(animate ? 0 : 180))
-                .opacity(animate ? 1 : 0)
-                .animation(.spring(response: 0.7, dampingFraction: 0.4, blendDuration: 1)
-                    .delay(Double.random(in: randomMinRange..<randomMaxRange) * 0.2), value: animate)
-                
-            }
-        }
-        .onAppear {
-            withAnimation {
-                animate.toggle()
+                .navigationBarItems(trailing: Button(action: {
+                    if bookViewModel.mockBookService.numberOfCartItems() > 0 {
+                        self.showModal = true
+                    }
+                }) {
+                    CartButtonView(numberOfItems: self.bookViewModel.mockBookService.cart.numberOfItems)
+                }.sheet(isPresented: $showModal, onDismiss: {
+                    
+                }) {
+                    ShoppingCartView(showModal: self.$showModal, service: self.bookViewModel.mockBookService)
+                })
+                .navigationBarTitle(Text(""), displayMode: .inline)
+                .onAppear {
+                    withAnimation {
+                        animate.toggle()
+                    }
+                }
             }
         }
     }

@@ -36,5 +36,6 @@ struct ItemCountImageOverlay: View {
 struct CartImageOverlay_Previews: PreviewProvider {
     static var previews: some View {
         CartImageOverlay(numberOfItems: 2)
+            .previewLayout(.sizeThatFits)
     }
 }
