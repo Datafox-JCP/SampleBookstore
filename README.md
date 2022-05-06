@@ -6,9 +6,9 @@
 2. Shoppingcart implementation
 3. Animations
 
-![Book List](/listing.png)
-![Book detail](detail.png)
-![Shopping cart](/cart.png)
+![Book List](/SampleBookstore/listing.png)
+![Book detail](/SampleBookstore/detail.png)
+![Shopping cart](/SampleBookstore/Cart.png)
 
 
 📌 MVVM
